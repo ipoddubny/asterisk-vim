@@ -1,9 +1,9 @@
 " Vim syntax file
-" Language:	Asterisk config file
-" Maintainer:	brc007 
-" Updated for 1.2 by Tilghman Lesher (Corydon76)
-" Last Change:	2006 Mar 20 
-" version 0.4
+" Language: Asterisk config file
+" Maintainer:   brc007 
+" Updated for 1.6.2 by Tilghman Lesher (Corydon76)
+" Last Change:	2008 Oct 10 
+" version 0.5
 "
 if version < 600
   syntax clear
@@ -14,32 +14,32 @@ endif
 syn sync clear
 syn sync fromstart
 
-syn keyword     asteriskTodo    TODO contained
+syn keyword     asteriskTodo            TODO contained
 syn match       asteriskComment         "\(^\|[^\\]\);.*" contains=asteriskTodo
 syn region      asteriskBlockComment    start=/\(;--[^-]\|;--$\)/ end=/--;/ contains=asteriskBlockComment,asteriskTodo
 syn match       asteriskContext         "\[.\{-}\]"
 syn match       asteriskExten           "^\s*exten\s*=>\?\s*[^,]\+" contains=asteriskPattern
 syn match       asteriskExten           "^\s*same\s*=>\?\s*[^,]\+" contains=asteriskPriority
 syn match       asteriskExten           "^\s*\(register\|channel\|ignorepat\|include\|\(no\)\?load\)\s*=>\?"
-syn match       asteriskPattern         "_\(\[[[:alnum:]#*\-]\+\]\|[[:alnum:]#*]\)*\.\?" contained
-syn match       asteriskPattern         "[^A-Za-z0-9,]\zs[[:alnum:]#*]\+\ze" contained
+syn match       asteriskPattern         "_\(\[[[:alnum:]#*\-]\+\]\|[[:alnum:]#*\-]\)*\.\?" contained
+syn match       asteriskPattern         "[^A-Za-z0-9,]\zs[[:alnum:]#*\-]\+\ze" contained
 syn match       asteriskApp             ",\zs[a-zA-Z]\+\ze$"
 syn match       asteriskApp             ",\zs[a-zA-Z]\+\ze("
 " Digits plus oldlabel (newlabel)
 syn match       asteriskPriority        ",\?\zs[[:digit:]]\+\(+[[:alpha:]][[:alnum:]_]*\)\?\(([[:alpha:]][[:alnum:]_]*)\)\?\ze," contains=asteriskLabel
 " oldlabel plus digits (newlabel)
-syn match       asteriskPriority        ",\?\zs[[:alpha:]][[:alnum:]_]*+[[:digit:]]\+\(([[:alpha:]][[:alnum:]_]*)\)\?\ze," contains=asteriskLabel
+syn match       asteriskPriority        "\zs[[:alpha:]][[:alnum:]_]*+[[:digit:]]\+\(([[:alpha:]][[:alnum:]_]*)\)\?\ze," contains=asteriskLabel
 " s or n plus digits (newlabel)
-syn match       asteriskPriority        ",\?\zs[sn]\(+[[:digit:]]\+\)\?\(([[:alpha:]][[:alnum:]_]*)\)\?\ze," contains=asteriskLabel
+syn match       asteriskPriority        "\zs[sn]\(+[[:digit:]]\+\)\?\(([[:alpha:]][[:alnum:]_]*)\)\?\ze," contains=asteriskLabel
 syn match       asteriskLabel           "(\zs[[:alpha:]][[:alnum:]]*\ze)" contained
 syn match       asteriskError           "^\s*#\s*[[:alnum:]]*"
 syn match       asteriskInclude         "^\s*#\s*\(include\|exec\)\s.*"
-syn match       asteriskVar             "\${_\{0,2}[[:alpha:]][[:alnum:]_]*\(:-\?[[:digit:]]\+\(:[[:digit:]]\+\)\?\)\?}"
+syn match       asteriskVar             "\${_\{0,2}[[:alpha:]][[:alnum:]_]*\(:-\?[[:digit:]]\+\(:-\?[[:digit:]]\+\)\?\)\?}"
 syn match       asteriskVar             "(\zs_\{0,2}[[:alpha:]][[:alnum:]_]*\ze=" contained
 syn match       asteriskVar             "^\s*\zs_\{0,2}[[:alpha:]][[:alnum:]_]*\ze\s*=" 
 syn region      asteriskVarLen          start=/${_\{0,2}[[:alpha:]][[:alnum:]_]*(/ end=/)\(:-\?[[:digit:]]\+\(:[[:digit:]]\+\)\?\)\?}/ contains=asteriskVar,asteriskVarLen,asteriskExp oneline
-syn match       asteriskVarLen          "(\zs[[:alpha:]][[:alnum:]_]*(.\{-})\ze=" contains=asteriskVar,asteriskVarLen,asteriskExp
-syn match       asteriskExp             "\$\[.\{-}\]" contains=asteriskVar,asteriskVarLen,asteriskExp
+syn match       asteriskVarLen          "(\zs[[:alpha:]][[:alnum:]_]*(.*)\ze=" contains=asteriskVar,asteriskVarLen,asteriskExp
+syn match       asteriskExp             "\$\[.*\]" contains=asteriskVar,asteriskVarLen,asteriskExp
 syn match       asteriskCodecsPermit    "^\s*\(allow\|disallow\)\s*=\s*.*$" contains=asteriskCodecs
 syn match       asteriskCodecs          "\(g723\|gsm\|ulaw\|alaw\|g726\|adpcm\|slin\|lpc10\|g729\|speex\|ilbc\|all\s*$\)"
 syn match       asteriskError           "^\(type\|auth\|permit\|deny\|bindaddr\|host\)\s*=.*$"
@@ -68,14 +68,14 @@ if version >= 508 || !exists("did_conf_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink        asteriskComment		Comment
-  HiLink        asteriskBlockComment		Comment
-  HiLink        asteriskExten		String
+  HiLink        asteriskComment         Comment
+  HiLink        asteriskBlockComment    Comment
+  HiLink        asteriskExten           String
   HiLink        asteriskContext         Preproc
   HiLink        asteriskPattern         Type
   HiLink        asteriskApp             Statement
   HiLink        asteriskInclude         Preproc
-  HiLink        asteriskIncludeBad	Error
+  HiLink        asteriskIncludeBad      Error
   HiLink        asteriskPriority        Preproc
   HiLink        asteriskLabel           Type
   HiLink        asteriskVar             String
