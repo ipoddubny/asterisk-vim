@@ -1,0 +1,5 @@
+snippet exten
+	exten => ${1:`matchstr(getline(line('.')-1),'=>\s*\zs\([^,]*\)')`},${2:n},${3}
+
+snippet same
+	same => ${1:n},${2}

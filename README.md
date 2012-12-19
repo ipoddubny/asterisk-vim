@@ -1,10 +1,15 @@
 asterisk-vim
 ============
 
-Vim syntax highlight for Asterisk configuration
+Vim syntax highlight and SnipMate snippets for Asterisk config files
 
-I've tried to fix a few annoying bugs in the syntax highlighting for Asterisk that comes with Vim by default.
-Just place the files in the syntax directory in your Vim runtime path, for Linux it is usually ~/.vim/syntax/.
+Snippets for extensions.conf:
+ * exten<TAB> - takes exten from the previous string where available
+ * same<TAB>
+
+Installation:
+
+Copy files in syntax directory to your ~/.vim/syntax/ and place asterisk.snippets in the snippets directory of SnipMate 
 
 What's new:
  * multiline comments ;-- --;
