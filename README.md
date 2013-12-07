@@ -1,25 +1,28 @@
 asterisk-vim
 ============
 
-Vim syntax highlight and SnipMate snippets for Asterisk config files
+Vim syntax highlight and SnipMate snippets for Asterisk config files.
 
 Snippets for extensions.conf:
- * exten<TAB> - takes exten from the previous string where available
- * same<TAB>
+ * exten\<TAB> - takes exten from the previous string where available
+ * same\<TAB>
 
 Installation
 ------------
 
-If you have Pathogen plugin installed, copy and paste:
-	cd ~/.vim/bundle
-	git clone git://github.com/ipoddubny/asterisk-vim.git
+Using Pathogen:
+```sh
+cd ~/.vim/bundle
+git clone git://github.com/ipoddubny/asterisk-vim.git
+```
 
-Otherwise, copy files in syntax directory to your ~/.vim/syntax/ and place asterisk.snippets in the snippets directory of SnipMate 
+Manual installation:
+Copy the files in syntax directory to ~/.vim/syntax/ and place asterisk.snippets to snipmate's snippets directory.
 
 What's new
 ----------
- * multiline comments ;-- --;
+ * support for multiline comments ;-- --;
  * correct handling of escaped semicolon \; - it's not a comment
- * "same =>" prefix in extensions.conf
+ * support for "same =>" prefix in extensions.conf
  * fixed hostname in "host=" for sip.conf, iax.conf, etc
- * few other minor fixes
+ * a few minor fixes for extensions.conf
